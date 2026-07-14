@@ -1,0 +1,296 @@
+:root {
+  --paper: #f4f1ea;
+  --paper-card: #faf8f2;
+  --ink: #2b2620;
+  --ink-soft: #6b6255;
+  --rule: #2b2620;
+  --accent: #b5673a;
+  --accent-soft: #c9a06a;
+  --border: #d8d0bf;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-mono: "Space Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 32px);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+}
+
+.masthead { text-align: center; margin-bottom: 36px; }
+
+.catalog-no {
+  font-family: var(--font-mono);
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+
+.masthead h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 52px;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.tagline {
+  font-family: var(--font-mono);
+  color: var(--ink-soft);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  margin: 12px 0 22px;
+}
+
+.rule {
+  height: 3px;
+  background: var(--rule);
+  width: 640px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.rule::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 1px;
+  background: var(--rule);
+}
+
+.desk { max-width: 900px; margin: 40px auto 0; }
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  padding-left: 8px;
+}
+
+.tab {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  padding: 12px 22px;
+  cursor: pointer;
+  color: var(--ink-soft);
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  top: 1px;
+}
+
+.tab:hover { color: var(--ink); }
+
+.tab.active {
+  background: var(--paper-card);
+  color: var(--ink);
+  font-weight: 700;
+  border-color: var(--rule);
+  border-bottom: 1px solid var(--paper-card);
+}
+
+.card {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: 0 4px 4px 4px;
+  padding: 36px;
+  min-height: 380px;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+.panel-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 26px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-soft);
+  display: inline-block;
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px dotted var(--ink-soft);
+  padding: 10px 4px;
+  width: 100%;
+  outline: none;
+}
+
+textarea {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 14px;
+  width: 100%;
+  resize: vertical;
+  margin-bottom: 16px;
+  font-size: 15px;
+  background: #fffdf8;
+}
+
+textarea:focus, input:focus, select:focus {
+  border-color: var(--accent);
+}
+
+input[type="number"] { max-width: 90px; flex: none; }
+select {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  max-width: 140px;
+  flex: none;
+  border-bottom: 1px dotted var(--ink-soft);
+}
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 13px 26px;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.btn:hover { opacity: 0.85; }
+.btn:disabled { opacity: 0.5; cursor: wait; }
+
+.result {
+  margin-top: 28px;
+  font-size: 16px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.result:empty { margin-top: 0; }
+
+.result .error {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.result .loading {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+}
+
+/* Quiz */
+.quiz-q {
+  border-top: 1px solid var(--border);
+  padding: 18px 0;
+}
+.quiz-q:first-child { border-top: none; padding-top: 0; }
+.quiz-q .q-text { font-weight: 600; margin-bottom: 10px; }
+.quiz-q .options { display: flex; flex-direction: column; gap: 6px; }
+.quiz-q label {
+  font-size: 15px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+}
+.quiz-q label:hover { border-color: var(--accent-soft); }
+.quiz-q label.correct { border-color: #5c7a4f; background: #eef3ea; }
+.quiz-q label.incorrect { border-color: var(--accent); background: #f6ece5; }
+.quiz-q .explanation {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  display: none;
+}
+.quiz-q.answered .explanation { display: block; }
+.quiz-actions { margin-top: 20px; }
+
+/* Flashcards */
+.flash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.flashcard {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px;
+  min-height: 110px;
+  cursor: pointer;
+  background: #fffdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+}
+.flashcard .face-label {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--accent-soft);
+}
+.flashcard.flipped { background: #f4ede1; }
+
+.footer {
+  text-align: center;
+  margin-top: 48px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 640px) {
+  .masthead h1 { font-size: 36px; }
+  .card { padding: 22px; }
+  .tabs { flex-wrap: wrap; }
+  .input-row { flex-direction: column; align-items: stretch; }
+  input[type="number"] { max-width: none; }
+}

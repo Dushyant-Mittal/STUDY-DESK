@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Study Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Space+Mono:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <p class="catalog-no">CATALOG NO. AI-2026</p>
+      <h1>The Study Desk</h1>
+      <p class="tagline">an ai research assistant, filed for easy retrieval</p>
+      <div class="rule"></div>
+    </header>
+
+    <main class="desk">
+      <nav class="tabs" role="tablist" aria-label="Study Desk tools">
+        <button class="tab active" data-tab="ask" role="tab" aria-selected="true">ASK</button>
+        <button class="tab" data-tab="summarize" role="tab" aria-selected="false">SUMMARIZE</button>
+        <button class="tab" data-tab="quiz" role="tab" aria-selected="false">QUIZ ME</button>
+        <button class="tab" data-tab="flashcards" role="tab" aria-selected="false">FLASHCARDS</button>
+      </nav>
+
+      <section class="card">
+
+        <!-- ASK -->
+        <div class="panel active" data-panel="ask">
+          <p class="panel-label"><span class="dot"></span>REFERENCE DESK — ASK ANYTHING YOU'RE STUDYING</p>
+          <div class="input-row">
+            <input type="text" id="ask-input" placeholder="e.g. Why does entropy always increase?" />
+            <button class="btn" id="ask-btn">ASK</button>
+          </div>
+          <div class="result" id="ask-result"></div>
+        </div>
+
+        <!-- SUMMARIZE -->
+        <div class="panel" data-panel="summarize">
+          <p class="panel-label"><span class="dot"></span>ARCHIVIST — CONDENSE YOUR NOTES</p>
+          <textarea id="summarize-input" rows="6" placeholder="Paste the text, notes, or chapter you want summarized…"></textarea>
+          <div class="input-row">
+            <select id="summarize-length">
+              <option value="short">SHORT</option>
+              <option value="medium" selected>MEDIUM</option>
+              <option value="long">LONG</option>
+            </select>
+            <button class="btn" id="summarize-btn">SUMMARIZE</button>
+          </div>
+          <div class="result" id="summarize-result"></div>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="panel" data-panel="quiz">
+          <p class="panel-label"><span class="dot"></span>PROCTOR — TEST YOUR RECALL</p>
+          <textarea id="quiz-input" rows="6" placeholder="Paste the material you want to be quizzed on…"></textarea>
+          <div class="input-row">
+            <input type="number" id="quiz-count" min="1" max="15" value="5" title="Number of questions" />
+            <button class="btn" id="quiz-btn">QUIZ ME</button>
+          </div>
+          <div class="result" id="quiz-result"></div>
+        </div>
+
+        <!-- FLASHCARDS -->
+        <div class="panel" data-panel="flashcards">
+          <p class="panel-label"><span class="dot"></span>INDEX CARDS — DRILL KEY TERMS</p>
+          <textarea id="flashcards-input" rows="6" placeholder="Paste the material to turn into flashcards…"></textarea>
+          <div class="input-row">
+            <input type="number" id="flashcards-count" min="1" max="20" value="8" title="Number of cards" />
+            <button class="btn" id="flashcards-btn">MAKE CARDS</button>
+          </div>
+          <div class="result" id="flashcards-result"></div>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>filed under: college portfolio project · reference desk staffed by ai</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
